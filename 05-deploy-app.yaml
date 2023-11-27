@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app
+  namespace: app-nm
+spec:
+  replicas: 2  # Número deseado de réplicas
+  selector:
+    matchLabels:
+      app: node-app
+  template:
+    metadata:
+      labels:
+        app: node-app
+    spec:
+      containers:
+      - name: node-app
+        image: nattymabe926/lab2dockercompose:actividad2-laboratorio-app
+        ports:
+        - containerPort: 3000  # Puerto que expone tu aplicación
+        volumeMounts:
+        - name: app-volume
+          mountPath: /app
+      volumes:
+      - name: app-volume
+        persistentVolumeClaim:
+          claimName: nodejs-pv-claim
