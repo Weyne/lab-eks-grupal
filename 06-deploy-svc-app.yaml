@@ -11,4 +11,3 @@ spec:
       port: 80  # Puerto del servicio
       targetPort: 3000  # Puerto al que redirige el servicio
   type: LoadBalancer  # Tipo de servicio (LoadBalancer en EKS para obtener un punto de conexión externo)
-
